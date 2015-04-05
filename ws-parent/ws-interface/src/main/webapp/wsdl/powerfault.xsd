@@ -1,6 +1,6 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/power/fail/" targetNamespace="http://schematics.merenita.com/gsos/power/fail/" elementFormDefault="qualified">
 <!--  Kandidaat root element  -->
-<xsd:element name="powerFail">
+<xsd:element name="powerFault">
 <!--  anoniem type  -->
 <xsd:complexType>
 <xsd:sequence>

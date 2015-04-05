@@ -1,4 +1,4 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/power/response/" targetNamespace="http://schematics.merenita.com/gsos/power/response" elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/power/response/" targetNamespace="http://schematics.merenita.com/gsos/power/response/" elementFormDefault="qualified">
 <!--  Kandidaat root element  -->
 <xsd:element name="powerResponse">
 <!--  anoniem type  -->

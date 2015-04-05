@@ -1,10 +1,9 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:req="http://schematics.merenita.com/gsos/power/request/" xmlns:rsp="http://schematics.merenita.com/gsos/power/response/" xmlns:hdr="http://schemas.hu.fnt.nl/berichten/header" xmlns:flt="http://schematics.merenita.com/gsos/power/fail/" xmlns:srv="http://schematics.merenita.com/gsos/power/message/" targetNamespace="http://schematics.merenita.com/gsos/power/message/">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:req="http://schematics.merenita.com/gsos/power/request/" xmlns:rsp="http://schematics.merenita.com/gsos/power/response/" xmlns:flt="http://schematics.merenita.com/gsos/power/fail/" xmlns:srv="http://schematics.merenita.com/gsos/power/message/" targetNamespace="http://schematics.merenita.com/gsos/power/message/">
 <wsdl:types>
 <xsd:schema>
-<xsd:import namespace="http://schematics.merenita.com/gsos/power/request/" schemaLocation="powerRequest.xsd"/>
-<xsd:import namespace="http://schematics.merenita.com/gsos/power/response/" schemaLocation="powerResponse.xsd"/>
-<xsd:import namespace="http://schemas.hu.fnt.nl/berichten/header" schemaLocation="header.xsd"/>
-<xsd:import namespace="http://schematics.merenita.com/gsos/power/fail/" schemaLocation="powerFail.xsd"/>
+<xsd:import namespace="http://schematics.merenita.com/gsos/power/request/" schemaLocation="powerrequest.xsd"/>
+<xsd:import namespace="http://schematics.merenita.com/gsos/power/response/" schemaLocation="powerresponse.xsd"/>
+<xsd:import namespace="http://schematics.merenita.com/gsos/power/fail/" schemaLocation="powerfail.xsd"/>
 </xsd:schema>
 </wsdl:types>
 <wsdl:message name="request">
@@ -13,29 +12,34 @@
 <wsdl:message name="response">
 <wsdl:part name="response" element="rsp:powerResponse"/>
 </wsdl:message>
-<wsdl:message name="ApplicatieFout">
-<wsdl:part name="ApplicatieFout" element="flt:powerFail"/>
+<wsdl:message name="Fault">
+<wsdl:part name="Fault" element="flt:powerFail"/>
 </wsdl:message>
 <wsdl:portType name="powerSoap">
 <wsdl:operation name="getActualResult">
 <wsdl:input message="srv:request"/>
 <wsdl:output message="srv:response"/>
-<wsdl:fault name="ApplicatieFout" message="srv:ApplicatieFout"/>
+<wsdl:fault name="Fault" message="srv:Fault"/>
 </wsdl:operation>
 </wsdl:portType>
-<wsdl:binding name="WS-Binding" type="srv:WS-Interface">
-<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:binding name="powerSoap12" type="srv:powerSoap">
+<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 <wsdl:operation name="getActualResult">
-<soap:operation soapAction="" style="document"/>
+<soap12:operation soapAction="" style="document"/>
 <wsdl:input>
-<soap:body use="literal"/>
+<soap12:body use="literal"/>
 </wsdl:input>
 <wsdl:output>
-<soap:body use="literal"/>
+<soap12:body use="literal"/>
 </wsdl:output>
-<wsdl:fault name="ApplicatieFout">
-<soap:fault name="ApplicatieFout" use="literal"/>
+<wsdl:fault name="Fault">
+<soap12:fault name="Fault" use="literal"/>
 </wsdl:fault>
 </wsdl:operation>
 </wsdl:binding>
+<wsdl:service name="powerService">
+<wsdl:port name="powerServiceSoap" binding="srv:powerSoap12">
+<soap12:address location="http://gsos.jelleluteijn.com/PowerService.do"/>
+</wsdl:port>
+</wsdl:service>
 </wsdl:definitions>
