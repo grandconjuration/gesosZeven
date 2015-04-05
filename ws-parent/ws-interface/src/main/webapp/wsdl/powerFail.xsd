@@ -1,0 +1,12 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/power/fail/" targetNamespace="http://schematics.merenita.com/gsos/power/fail/" elementFormDefault="qualified">
+<!--  Kandidaat root element  -->
+<xsd:element name="powerFail">
+<!--  anoniem type  -->
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="code" type="xsd:positiveInteger"/>
+<xsd:element name="message" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
